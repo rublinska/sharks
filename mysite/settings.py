@@ -25,7 +25,7 @@ SECRET_KEY = 'u84uq3o#b@sw-nniqegdi0d#faubhfkz!1(o7_@3c5x7^0-ger'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['rublinska.pythonanywhere.com']
 
 
 # Application definition
@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'event'
+    'landing',
+    'event',
+    'order',
 ]
 
 MIDDLEWARE = [
@@ -116,7 +118,7 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.11/howto/static-files/
+# https://docs.djangoproject.com/en/1.11/howto/static-files//
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
