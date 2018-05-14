@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 416b42aab500af35c8af310b942f535a8ddf82fe
 from django.db import models
 from django.core.validators import RegexValidator
 
@@ -22,7 +26,11 @@ class Org(models.Model):
     user = models.ForeignKey(User, blank=False, default=None, null=True, on_delete=models.CASCADE)
     nickname = models.CharField(max_length=32, default=None, blank=False, null=True)
     description = models.TextField(max_length=1024, blank=True, default=None)
+<<<<<<< HEAD
     avatar = models.ImageField(upload_to='static/media/events_gallery/admins', blank=False, null=True)
+=======
+    avatar = models.ImageField(upload_to='sharks-blog/static/media/events_gallery/orgs', blank=False, null=True)
+>>>>>>> 416b42aab500af35c8af310b942f535a8ddf82fe
 
     def __str__(self):
         return "%s" % self.nickname

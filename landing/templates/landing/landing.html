@@ -1,0 +1,156 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+  <div class="container-fluid">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="5000">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        {%  for event in events %}
+          <li data-target="#carouselExampleIndicators" data-slide-to="{{ event.id }}"></li>
+        {% endfor %}
+      </ol>
+
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5">
+                <img src="{{ events.last.poster.url }}" class="img-responsible d-block w-100">
+            </div>
+            <div class="col-sm-5">
+              <h1 id="event-name" class="font-weight-bold">{{ events.last.event_name }}</h1>
+              <div class="row ">
+                <div class="col-sm-4">
+                  <p id="price">{{ events.last.price }} UAH</p>
+                </div>
+                <div class="col-sm-8">
+                  <p id="datetime">{{ events.last.date }} at {{ events.last.time }}</p>
+                </div>
+                <p id="description">{{ events.last.description }}</p>
+                {% if events.last.is_past %}
+                  <button type="button" class="btn-buy-remember" data-toggle="" data-target="#login-form">remember how it was</button>
+                {% else %}
+                  <button type="button" id="buy-button" class="btn-buy-remember" data-toggle="modal" data-target="#buy-form">buy tickets</button>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {%  for event in events %}
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-sm-1"></div>
+              <div class="col-sm-5">
+                <img src=" {{ event.poster.url }}" class="img-responsible d-block w-100">
+              </div>
+              <div class="col-sm-5">
+                <h1 id="event-name" class="font-weight-bold">{{ event.event_name }}</h1>
+                <div class="row ">
+                  <div class="col-sm-4">
+                    <p id="price">{{ event.price }} UAH</p>
+                  </div>
+                  <div class="col-sm-8">
+                    <p id="datetime">{{ event.date }} at {{ event.time }}</p>
+                  </div>
+                  <p id="description">{{ event.description }}</p>
+                  {% if event.is_past %}
+                    <button type="button" class="btn-buy-remember">remember how it was</button>
+                  {% else %}
+                    <button type="button"  id="buy-button" class="btn-buy-remember" data-toggle="modal" data-target="#buy-form">buy tickets</button>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <a class="carousel-control left" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a class="carousel-control right" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
+    </div>
+  </div>
+
+{%  include 'navbar.html' %}
+
+  <div class="modal fade" id="login-form">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" id="content">
+        <div class="modal-header">
+          <h1 class="modal-title">Hi, our friend!</h1>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <div class="modal-body">
+          <form action="">
+            <div>
+              <input type="text" placeholder="Username" required="" id="username" />
+            </div>
+            <div>
+              <input type="password" placeholder="Password" required="" id="password" />
+            </div>
+            <div>
+              <button type="submit" value="Log in">Log in</button>
+              <a class="right" href="#">Lost your password?</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="buy-form">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" id="content">
+
+        <div class="modal-header">
+          <h1 class="modal-title">Tickets Ordering</h1>
+          <label for="inputParty">Party/Ship info</label>
+          <select id="inputParty" class="form-control"></select>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <div class="modal-body">
+          <form action="">
+            <div>
+              <input type="text" placeholder="Name" required="" id="name" />
+            </div>
+            <div>
+              <input type="text" placeholder="Surname" required="" id="surname" />
+            </div>
+            <div>
+              <input type="email" placeholder="Email" required="" id="email" />
+            </div>
+            <div>
+              <input type="tel" placeholder="Phone" required="" id="phone" />
+            </div>
+            <div>
+              <input type="number" placeholder="Quantity of tickets" required="" id="tickets_quantity" />
+            </div>
+            <button type="submit">Go to the payment</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <section id="gallery">
+    {% for img in event_images %}
+      <img src="{{ img.image.url }}">
+
+      <!--https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_slideshow_gallery
+          https://www.w3schools.com/howto/howto_css_modal_images.asp -->
+
+    {% endfor %}
+  </section>
+  <div>
+
+  </div>
+
+{% endblock content %}

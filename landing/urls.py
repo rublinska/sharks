@@ -18,5 +18,9 @@ from django.contrib import admin
 from . import views
 
 urlpatterns = [
+<<<<<<< HEAD
     url(r'^', views.landing, name='landing'),
+=======
+    url(r'', views.landing, name='landing'),
+>>>>>>> 416b42aab500af35c8af310b942f535a8ddf82fe
 ]
