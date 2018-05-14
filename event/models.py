@@ -36,7 +36,7 @@ class Event(models.Model):
     description = models.TextField(max_length=1024, blank=True, default=None)
     type = models.ForeignKey(Type, blank=False, on_delete=models.CASCADE)
     date = models.DateField(auto_now=False)
-    poster = models.ImageField(upload_to='events_gallery/posters', blank=False, null=True)
+    poster = models.ImageField(upload_to='static/media/events_gallery/posters', blank=False, null=True)
     time = models.TimeField(auto_now=False, blank=True, default=datetime.time(19, 00, 00))
     place = models.ForeignKey(Place, blank=False, null=True, on_delete=models.DO_NOTHING)
     price = models.IntegerField(blank=True, default=100)
@@ -55,7 +55,7 @@ class Event(models.Model):
 
 class EventImage(models.Model):
     event = models.ForeignKey(Event, blank=False, default=None, null=True, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='events_gallery/gallery')
+    image = models.ImageField(upload_to='static/media/events_gallery/gallery')
 
     def __str__(self):
         return "%s" % self.id
