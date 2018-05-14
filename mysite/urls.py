@@ -13,11 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-<<<<<<< HEAD
-from django.conf.urls import url, include
-=======
-from django.conf.urls import url,include
->>>>>>> 416b42aab500af35c8af310b942f535a8ddf82fe
+from django.conf.urls import url,include    
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
@@ -26,10 +22,5 @@ from django.conf.urls.static import static
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('landing.urls')),
-<<<<<<< HEAD
-
 ] \
     +static(settings.STATIC_URL,document_root=settings.STATIC_ROOT) 
-=======
-]
->>>>>>> 416b42aab500af35c8af310b942f535a8ddf82fe

@@ -14,7 +14,4 @@ def landing(request):
     events = Event.objects.all()
     event_images = EventImage.objects.all()
     return render(request, 'landing/landing.html', locals())
-<<<<<<< HEAD
 
-=======
->>>>>>> 416b42aab500af35c8af310b942f535a8ddf82fe
